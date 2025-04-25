@@ -13,12 +13,16 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+permissions:
+  contents: write
+  actions: read
+  id-token: write
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_TOKEN: ${{ secrets.PAT_SECRET }}
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
